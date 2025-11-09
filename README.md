@@ -2,6 +2,7 @@
 
 - Inspired by julienokumu
 - Cannot run CUDA on my machine, so will be using Kaggle/Colab free GPUs
+- This will be a long process of getting more familiar with C++, CUDA, and Linear Algebra
 
 ## Day 0:
 Hello GPU World Kernel
