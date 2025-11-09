@@ -45,4 +45,4 @@ Vector Addition Kernel
 ### Resources:
 Read Chapter 2.1-2.3 of PMPP
 
-To be continued...
+Coming soon: Matrix multiplication and softmax algo kernels, Tensorflow exploration
