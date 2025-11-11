@@ -37,12 +37,37 @@ Hello GPU World Kernel
 - I wonder how many "Hello, Worlds!" that I would have to print in order for execution to not be immediate. My intuition says some large enough multiple of the number of streaming multiprocessors in the GPU itself would create a noticeable time interval between script execution and termination. I am sure this question will be addressed with further and more complex kernels on future days
 - Would it be more beneficial to my learning (and my finances) to buy a local GPU to run CUDA on? Which GPU would be most efficient for my purposes?
 - Threading syntax in CUDA is so much better than threading syntax in C++
-- I need to learn more about how the lock/release system works under the hood
+- I need to learn more about how the lock/release system works under the hood (eventually)
 
 ## Day 1:
-Vector Addition Kernel
+Vector Addition Kernel/Naive Matrix Multiplication
 
 ### Resources:
-Read Chapter 2.1-2.3 of PMPP
+- Read Chapter 2.1-2.3 of PMPP
+- Claude breakdowns of tough concepts
+- Nvidia CUDA documentation
+- LeetGPU
 
-Coming soon: Matrix multiplication and softmax algo kernels, Tensorflow exploration
+### Learnings:
+- Re-learned what extern was in C (LeetGPU testcases)
+- Learned and practice computed dot products by hand
+- Learned the hierarchy of grids, blocks, and threads in CUDA using a childish example
+- One big learning for me was the discrening factors between CUDA Kernels and general C code. My instict both today and yesterday was to write a main method to act as an entry point for the CUDA script. Learned that that is NOT how it works today
+- Learned basic differences between 
+    - ``` __global__ ``` 
+    - ``` __host__```
+    - ``` __device__ ```\ 
+global acts as a decorater for kernel functions. host is used as a decorated for C++ methods that run on the host processor. Device is a decorator for C++ method than can be called from the GPU and run on the kernel (i.e. callable from a thread in the kernel)
+- Learned the differnce between ``` cudaMemcpy, cudaMemcpyDeviceToHost, cudaMemcpyHostToDevice```. For some reason, the usage of the term device tripped me up. I now understand that cudaMemcpy is the same as C memcpy but is meant to be used in the GPU kernel. HostToDevice and DeviceToHost act as memcpy from the Host CPU RAM to the Device GPU VRAM.
+- Learned cudaMalloc allocates space on the GPU and returns a pointer to an address that only makes sense in the GPU's VRAM
+- Breifly read about unified memory and ```cudaMallocManaged(&unified_ptr, size);```
+
+### Performance Observations:
+- Both kernels executed instantly which is as expected due to the size of my testcases
+
+### Thoughts:
+
+
+
+## Day 2:
+TBC
