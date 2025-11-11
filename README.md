@@ -54,7 +54,7 @@ Vector Addition Kernel/Naive Matrix Multiplication
 - Learned the hierarchy of grids, blocks, and threads in CUDA using a childish example
 - One big learning for me was the discrening factors between CUDA Kernels and general C code. My instict both today and yesterday was to write a main method to act as an entry point for the CUDA script. Learned that that is NOT how it works today
 - Learned basic differences between ``` __global__ ```, ``` __host__```, and ``` __device__ ``` global acts as a decorater for kernel functions. host is used as a decorated for C++ methods that run on the host processor. Device is a decorator for C++ method than can be called from the GPU and run on the kernel (i.e. callable from a thread in the kernel)
-- Learned the differnce between ``` cudaMemcpy, cudaMemcpyDeviceToHost, cudaMemcpyHostToDevice```. For some reason, the usage of the term device tripped me up. I now understand that cudaMemcpy is the same as C memcpy but is meant to be used in the GPU kernel. HostToDevice and DeviceToHost act as memcpy from the Host CPU RAM to the Device GPU VRAM.
+- Learned the differnce between ``` cudaMemcpy```, ```cudaMemcpyDeviceToHost```, ```cudaMemcpyHostToDevice```. For some reason, the usage of the term device tripped me up. I now understand that cudaMemcpy is the same as C memcpy but is meant to be used in the GPU kernel. HostToDevice and DeviceToHost act as memcpy from the Host CPU RAM to the Device GPU VRAM.
 - Learned cudaMalloc allocates space on the GPU and returns a pointer to an address that only makes sense in the GPU's VRAM
 - Breifly read about unified memory and ```cudaMallocManaged(&unified_ptr, size);```
 
@@ -62,8 +62,8 @@ Vector Addition Kernel/Naive Matrix Multiplication
 - Both kernels executed instantly which is as expected due to the size of my testcases
 
 ### Thoughts:
-
-
+- PMPP book makes sense in a macro sense but at my current level there are minimal applications
+- Naive matmul kernel seemed TOO simple and I'm certain that I have not written an optimal solution (hence naive)
 
 ## Day 2:
 TBC
