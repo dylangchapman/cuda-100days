@@ -66,7 +66,7 @@ Vector Addition Kernel/Naive Matrix Multiplication
 - Naive matmul kernel seemed TOO simple and I'm certain that I have not written an optimal solution (hence naive)
 
 ## Day 2:
-Lets take a step back - Vector Addition Multiplication Comparison, rethinking my code environment
+Lets take a step back - Vector Addition Performance Comparisons between CPU and GPU, rethinking my code environment
 
 ### Resources:
 - Read Chapter 2.4-2.5 of PMPP
@@ -74,10 +74,11 @@ Lets take a step back - Vector Addition Multiplication Comparison, rethinking my
 
 ### Learnings:
 - Gained much better intuition on how CUDA threads operate by learning from the RGB image color inversion kernel from LeetGPU. Conceptually I understood the way the threads execute but the lack of true iteration in the CUDA code gave me a really hard time to sit down and write CUDA from no examples
-- Brushed up on the architecture of a traditional CPU. Tomorrow will go indepth in GPU architecture and its nuance
+- Brushed up on the architecture of a traditional CPU. Tomorrow will go indepth in GPU architecture and it's nuance
+- C++ chrono library
 
 ### Performance Observations:
-- No CUDA executions today as I am working on getting g4dn access
+- No CUDA executions today as I am working on getting g4dn access. Can't be bothered writing and executing files on kaggle anymore
 
 ### Notes:
 - AWS rules require me to wait for my case to be addressed. I had to request a higher vCPU quota in order to spin up a g4dn.xlarge EC2 instance (I am planning to use Amazon GPUs rather than coding in kaggle. Such a hassle to write and test code in separate files. Can't be bothered)
