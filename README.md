@@ -87,7 +87,9 @@ Lets take a step back - Vector Addition Performance Comparisons between CPU and 
 
 ## Day 3:
 The introduction of AWS g4dn.xlarge instances for real CUDA usage and vector addition simulations
+To be continued...
 
+<!--
 ### Resources:
 -
 
@@ -100,3 +102,4 @@ The introduction of AWS g4dn.xlarge instances for real CUDA usage and vector add
 ### Notes:
 
 To be continued...
+-->
