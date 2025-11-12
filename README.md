@@ -33,7 +33,7 @@ Hello GPU World Kernel
 ### Performance Observations:
 - Code executed instantly (obviously)
 
-### Thoughts:
+### Notes:
 - I wonder how many "Hello, Worlds!" that I would have to print in order for execution to not be immediate. My intuition says some large enough multiple of the number of streaming multiprocessors in the GPU itself would create a noticeable time interval between script execution and termination. I am sure this question will be addressed with further and more complex kernels on future days
 - Would it be more beneficial to my learning (and my finances) to buy a local GPU to run CUDA on? Which GPU would be most efficient for my purposes?
 - Threading syntax in CUDA is so much better than threading syntax in C++
@@ -61,36 +61,41 @@ Vector Addition Kernel/Naive Matrix Multiplication
 ### Performance Observations:
 - Both kernels executed instantly which is as expected due to the size of my testcases
 
-### Thoughts:
+### Notes:
 - PMPP book makes sense in a macro sense but at my current level there are minimal applications
 - Naive matmul kernel seemed TOO simple and I'm certain that I have not written an optimal solution (hence naive)
 
 ## Day 2:
-Lets take a step back - Vector Addition Multiplication Comparison
+Lets take a step back - Vector Addition Multiplication Comparison, rethinking my code environment
 
 ### Resources:
-- Read Chapter 2.1-2.3 of PMPP
-- Claude breakdowns of tough concepts
-- Nvidia CUDA documentation
-- LeetGPU
+- Read Chapter 2.4-2.5 of PMPP
+- Nvidia CUDA best practices materials
 
 ### Learnings:
-- Re-learned what extern was in C (LeetGPU testcases)
-- Learned and practice computed dot products by hand
-- Learned the hierarchy of grids, blocks, and threads in CUDA using a childish example
-- One big learning for me was the discrening factors between CUDA Kernels and general C code. My instict both today and yesterday was to write a main method to act as an entry point for the CUDA script. Learned that that is NOT how it works today
-- Learned basic differences between ``` __global__ ```, ``` __host__```, and ``` __device__ ``` global acts as a decorater for kernel functions. host is used as a decorated for C++ methods that run on the host processor. Device is a decorator for C++ method than can be called from the GPU and run on the kernel (i.e. callable from a thread in the kernel)
-- Learned the differnce between ``` cudaMemcpy```, ```cudaMemcpyDeviceToHost```, ```cudaMemcpyHostToDevice```. For some reason, the usage of the term device tripped me up. I now understand that cudaMemcpy is the same as C memcpy but is meant to be used in the GPU kernel. HostToDevice and DeviceToHost act as memcpy from the Host CPU RAM to the Device GPU VRAM.
-- Learned cudaMalloc allocates space on the GPU and returns a pointer to an address that only makes sense in the GPU's VRAM
-- Breifly read about unified memory and ```cudaMallocManaged(&unified_ptr, size);```
+- Gained much better intuition on how CUDA threads operate by learning from the RGB image color inversion kernel from LeetGPU. Conceptually I understood the way the threads execute but the lack of true iteration in the CUDA code gave me a really hard time to sit down and write CUDA from no examples
+- Brushed up on the architecture of a traditional CPU. Tomorrow will go indepth in GPU architecture and its nuance
 
 ### Performance Observations:
-- Both kernels executed instantly which is as expected due to the size of my testcases
+- No CUDA executions today as I am working on getting g4dn access
 
-### Thoughts:
-- PMPP book makes sense in a macro sense but at my current level there are minimal applications
-- Naive matmul kernel seemed TOO simple and I'm certain that I have not written an optimal solution (hence naive)
+### Notes:
+- AWS rules require me to wait for my case to be addressed. I had to request a higher vCPU quota in order to spin up a g4dn.xlarge EC2 instance (I am planning to use Amazon GPUs rather than coding in kaggle. Such a hassle to write and test code in separate files. Can't be bothered)
+- Looked into buying a GPU of my own (Was thinking 5070ti or 5080, both feel like they're currently out of my price range given my short term plans, so $0.5/h on AWS is not too bad)
+- Got more familiear with C++ code, though I am still very weak
 
+## Day 3:
+The introduction of AWS g4dn.xlarge instances for real CUDA usage and vector addition simulations
 
+### Resources:
+-
 
-TBC
+### Learnings:
+- 
+
+### Performance Observations:
+-
+
+### Notes:
+
+To be continued...
