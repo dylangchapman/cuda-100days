@@ -82,20 +82,44 @@ Lets take a step back - Vector Addition Multiplication Comparison, rethinking my
 ### Notes:
 - AWS rules require me to wait for my case to be addressed. I had to request a higher vCPU quota in order to spin up a g4dn.xlarge EC2 instance (I am planning to use Amazon GPUs rather than coding in kaggle. Such a hassle to write and test code in separate files. Can't be bothered)
 - Looked into buying a GPU of my own (Was thinking 5070ti or 5080, both feel like they're currently out of my price range given my short term plans, so $0.5/h on AWS is not too bad)
-- Got more familiear with C++ code, though I am still very weak
+- Got more familiar with C++ code, though I am still very weak
 
 ## Day 3:
 The introduction of AWS g4dn.xlarge instances for real CUDA usage and vector addition simulations
 
 ### Resources:
--
+- PMPP 3.1-3.4
+
+### Learnings:
+- cudaMalloc(), cudaMemcpy() in depth explanations from PMPP
+- Wrote color inversion LeetGPU kernel
+- Rewrote naive matmul kernel from memory
+
+### Performance Observations:
+- Again, large testcases will be the stress test on my kernels. Still awaiting access to enough vCPUs on AWS to run CUDA there outside of a managed LeetGPU/Kaggle environment
+
+### Notes:
+- Made a mistake by only raising my EC2 On-demand G instance quota to 1 vCPU when 4 is the minimum requirement for a g4dn.xlarge instance. Whoops
+
+
+<!--
+
+## Day 4:
+_
+
+### Resources:
+- 
 
 ### Learnings:
 - 
 
 ### Performance Observations:
--
+- 
 
 ### Notes:
+- 
+
+-->
+
 
 To be continued...
