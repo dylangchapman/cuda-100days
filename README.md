@@ -4,8 +4,7 @@
 - Cannot run CUDA on my machine, so will be using Kaggle/Colab free GPUs
 - This will be a long process of getting more familiar with C++, CUDA, and Linear Algebra
 
-## Day 0:
-Hello GPU World Kernel
+## Day 0: Hello GPU World Kernel
 
 ### Resources:
 - Read chapter 1 of Programming Massively Parallel Processors
@@ -39,8 +38,7 @@ Hello GPU World Kernel
 - Threading syntax in CUDA is so much better than threading syntax in C++
 - I need to learn more about how the lock/release system works under the hood (eventually)
 
-## Day 1:
-Vector Addition Kernel/Naive Matrix Multiplication
+## Day 1: Vector Addition Kernel/Naive Matrix Multiplication
 
 ### Resources:
 - Read Chapter 2.1-2.3 of PMPP
@@ -58,6 +56,10 @@ Vector Addition Kernel/Naive Matrix Multiplication
 - Learned cudaMalloc allocates space on the GPU and returns a pointer to an address that only makes sense in the GPU's VRAM
 - Breifly read about unified memory and ```cudaMallocManaged(&unified_ptr, size);```
 
+### Challenges
+- I'm annoyed with the execution environment of my code
+- I am having a hard time inuiting threading
+
 ### Performance Observations:
 - Both kernels executed instantly which is as expected due to the size of my testcases
 
@@ -65,8 +67,7 @@ Vector Addition Kernel/Naive Matrix Multiplication
 - PMPP book makes sense in a macro sense but at my current level there are minimal applications
 - Naive matmul kernel seemed TOO simple and I'm certain that I have not written an optimal solution (hence naive)
 
-## Day 2:
-Lets take a step back - Vector Addition Multiplication Comparison, rethinking my code environment
+## Day 2: Lets take a step back - Vector Addition Multiplication Comparison, rethinking my code environment
 
 ### Resources:
 - Read Chapter 2.4-2.5 of PMPP
@@ -74,7 +75,10 @@ Lets take a step back - Vector Addition Multiplication Comparison, rethinking my
 
 ### Learnings:
 - Gained much better intuition on how CUDA threads operate by learning from the RGB image color inversion kernel from LeetGPU. Conceptually I understood the way the threads execute but the lack of true iteration in the CUDA code gave me a really hard time to sit down and write CUDA from no examples
-- Brushed up on the architecture of a traditional CPU. Tomorrow will go indepth in GPU architecture and its nuance
+- Brushed up on the architecture of a traditional CPU. need to go indepth in GPU architecture and its nuance
+
+### Challenges
+- Lack of electrical engineering knowledge makes truly understanding cpu and gpu architecture difficult
 
 ### Performance Observations:
 - No CUDA executions today as I am working on getting g4dn access
@@ -84,8 +88,7 @@ Lets take a step back - Vector Addition Multiplication Comparison, rethinking my
 - Looked into buying a GPU of my own (Was thinking 5070ti or 5080, both feel like they're currently out of my price range given my short term plans, so $0.5/h on AWS is not too bad)
 - Got more familiar with C++ code, though I am still very weak
 
-## Day 3:
-The introduction of AWS g4dn.xlarge instances for real CUDA usage and vector addition simulations
+## Day 3: The introduction of AWS g4dn.xlarge instances for real CUDA usage and vector addition simulations
 
 ### Resources:
 - PMPP 3.1-3.4
@@ -95,16 +98,58 @@ The introduction of AWS g4dn.xlarge instances for real CUDA usage and vector add
 - Wrote color inversion LeetGPU kernel
 - Rewrote naive matmul kernel from memory
 
+### Challenges
+- I am reading about these method but have not found good instances in which to use them
+
 ### Performance Observations:
 - Again, large testcases will be the stress test on my kernels. Still awaiting access to enough vCPUs on AWS to run CUDA there outside of a managed LeetGPU/Kaggle environment
 
 ### Notes:
 - Made a mistake by only raising my EC2 On-demand G instance quota to 1 vCPU when 4 is the minimum requirement for a g4dn.xlarge instance. Whoops
 
+## Day 4: boom! g4dn liftoff + matrix transpose kernel
+Running real CUDA on my EC2 instance
+
+### Resources:
+- AWS documentation and GPT for ensuring I'm not going to wake up with a $1000 AWS bill
+- PMPP 3.5-3.6
+
+### Learnings:
+- More about ```__global__, __device__, __host__```
+- Matrix transpose formulas and functions
+
+### Challenges:
+- Tried to derive the matrix transpose pattern from scratch
+- Still struggling with mapping ```int i = blockDim.x * blockIdx.x + threadIdx.x; 
+                                   int j = blockDim.y * blockIdx.y + threadIdx.y;```
+    to anything meaningful in my head
+    
+### Performance Observations:
+- I'm amazed at the performance of the vecadd kernel. Instant execution of 100 million elements! I need more memory already to test these limits
+
+### Notes:
+- EC2 instance is up and running for CUDA! lets go. 3 days and multiple quota requests later, I have finally run and compiled cuda on a system that I can directly interact with
+- Here are the results from the vecAdd CPU vs GPU comparison. The results speak for themselves when it comes to GPU efficiency up to 16gb (My max memory on g4dn.xlarge)
+    ```
+    ========== Results ==========
+    Array size: 10000000 elements
+    CPU time: 9 ms
+    GPU time: 0 ms
+    Speedup: inf
+    ========== Results ==========
+    Array size: 100000000 elements
+    CPU time: 97 ms
+    GPU time: 0 ms
+    Speedup: inf
+    ```
+- I am interested to investigate where the extra 7ms came from in CPU execution time (I would assume with 10x elements we should have 10x run time, CPU was closer to 11x)
+- Additionally, I am interested to see how different the GPU execution time would be if I were running this code on a 5080 rather than T4s
+
+
 
 <!--
 
-## Day 4:
+## Day 5:
 _
 
 ### Resources:
@@ -120,5 +165,7 @@ _
 - 
 
 -->
+
+
 
 To be continued...
