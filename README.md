@@ -145,6 +145,30 @@ Running real CUDA on my EC2 instance
 - I am interested to investigate where the extra 7ms came from in CPU execution time (I would assume with 10x elements we should have 10x run time, CPU was closer to 11x)
 - Additionally, I am interested to see how different the GPU execution time would be if I were running this code on a 5080 rather than T4s
 
+## Day 5: 2D Matrix addition kernel
+
+### Resources:
+- PMPP Chapter 4.1-4.4
+
+### Learnings:
+- thread blocks usually are organized into 3 dimensions (x, y, z). Becayse grids are 2D arrays of block dimensions, the third field, Z, should be set to 1 for clarity
+- Kernel laugh <<<>>> parameters are, in order, dimensions of grid in terms of number of blocks, and dimensions of each block in terms of number of threads
+- Each kernel parameters is a C struct with 3 unsigned integer fields of x, y, z
+
+### Performance Observations:
+- When running with this test grid setup (thanks julien), the first kernel launch includes all overhead to launch threads.
+```
+    // Each test is 1m elements
+    Block Size: (1, 1), Time: 1.193824 ms       // has original launch overhead
+    Block Size: (32, 32), Time: 0.056608 ms     
+    Block Size: (16, 16), Time: 0.055648 ms
+    Block Size: (8, 8), Time: 0.055392 ms       // all runs with no launch overhead are similar in speed
+  ```
+
+
+### Notes:
+- Learned that more threads is not necessarily good. In the case of 32x32, it is the max legal size. This can limit the processing speed because each block takes up an entire streaming multiprocessor
+
 
 
 <!--
@@ -165,7 +189,6 @@ _
 - 
 
 -->
-
 
 
 To be continued...
