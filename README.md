@@ -171,8 +171,7 @@ Running real CUDA on my EC2 instance
 
 
 
-## Day 6:
-- Reverse Array Kernel
+## Day 6: Reverse Array Kernel
 
 ### Resources:
 - PMPP Chapter 4.5-4.6
@@ -186,6 +185,20 @@ Running real CUDA on my EC2 instance
 ### Notes:
 - First totally independent kernel write, with no resources
 
+
+## Day 7: Tiled Matrix Multiplication (Device and Host)
+
+### Resources:
+- PMPP Ch 4
+
+### Learnings:
+- 
+
+### Performance Observations:
+- 
+
+### Notes:
+- 
 
 
 
