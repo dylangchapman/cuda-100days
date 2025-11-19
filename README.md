@@ -186,19 +186,35 @@ Running real CUDA on my EC2 instance
 - First totally independent kernel write, with no resources
 
 
-## Day 7: Tiled Matrix Multiplication (Device and Host)
+## Day 7: Independent Tiled Matrix Multiplication (Device and Host)
 
 ### Resources:
-- PMPP Ch 4
+- CUDA manual, GPT, W3Schools
 
 ### Learnings:
-- 
+- This was hard. Wrapping my head around the tiling process was super difficult. Implementing the code in CUDA was 10x easier than implementing it in C
 
 ### Performance Observations:
-- 
+```
+===== GPU BENCHMARK =====
+Block size: (1, 1)
+GPU time: 2755.440 ms
+
+Block size: (16, 16)
+GPU time: 2.158 ms
+
+Block size: (32, 32)
+GPU time: 0.000 ms
+
+===== CPU BENCHMARK =====
+CPU time: 122455 ms
+```
+- Explains itself I think
 
 ### Notes:
-- 
+- Again, 1x1 grid really was just used for initialization
+- Got better at using syncthreads after reading about it yesterday
+
 
 
 
