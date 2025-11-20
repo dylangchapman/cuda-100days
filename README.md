@@ -218,6 +218,36 @@ CPU time: 122455 ms
 
 
 
+
+
+## Day 7: ReLU, Leaky ReLU, and 
+
+### Resources:
+- Google
+- Claude
+- LeetGPU
+
+### Learnings:
+- Took a break from PMPP today and did a bit of a refresher on GPU architecture and the streaming multiprocessor
+- Learned about the compiler instruction ```#pragma unroll <int>```. It amazes me how smart the nvcc compiler is
+- Learned a lot about how suboptimal the kernels I have written so far are. The sheer number of considerations when writing a kernel amazes me. For example: In some cases, you can optimize a kernel further my using LESS registers? Found this shocking
+- Honestly learned how much I've forgotten of my computer organization and compiler class. Was also amazed to learn that compilers automatically convert ```<int> / 10``` 
+to ```<int> * 0.1f``` even if it is not a bit-shift operation. 
+- ```fmaxf(<float1>, <float2>)```
+- ```atomicAdd(<num1>, <num2>)```
+
+### Performance Observations:
+- Going to test both of these CPU vs GPU on day 8, while running additional tests using unroll and without it. TBH I do not want to spin up AWS and write test code for this right now, and don't want to make AI write it and cheat myself of the C++ practice
+- I know I can make CountArrayElement faster by minimizing the atomicAdd operations by using shared memory. I will learn to implement this soon and will document
+
+### Notes:
+- I feel like I am becoming more comfortable with syntax, just need to get more in depth regarding functions in CUDA. Learning about unroll opened pandora's box for me.
+- Very enjoyable doing these LeetGPUs today
+
+
+
+
+
 <!--
 
 ## Day 5:
@@ -238,4 +268,6 @@ _
 -->
 
 
-To be continued...
+
+
+## Day 8: To be continued...
