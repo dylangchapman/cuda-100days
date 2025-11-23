@@ -215,12 +215,7 @@ CPU time: 122455 ms
 - Again, 1x1 grid really was just used for initialization
 - Got better at using syncthreads after reading about it yesterday
 
-
-
-
-
-
-## Day 7: ReLU, Leaky ReLU, and 
+## Day 8: ReLU, Leaky ReLU, and Count Array Element Kernels
 
 ### Resources:
 - Google
@@ -244,7 +239,19 @@ to ```<int> * 0.1f``` even if it is not a bit-shift operation.
 - I feel like I am becoming more comfortable with syntax, just need to get more in depth regarding functions in CUDA. Learning about unroll opened pandora's box for me.
 - Very enjoyable doing these LeetGPUs today
 
+## Day 9: Optimized Matrix Multiplication from scratch
 
+### Resources:
+- PMPP
+
+### Learnings:
+- 
+
+### Performance Observations:
+- 
+
+### Notes:
+- 
 
 
 
@@ -266,7 +273,6 @@ _
 - 
 
 -->
-
 
 
 
