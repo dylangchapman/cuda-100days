@@ -239,20 +239,52 @@ to ```<int> * 0.1f``` even if it is not a bit-shift operation.
 - I feel like I am becoming more comfortable with syntax, just need to get more in depth regarding functions in CUDA. Learning about unroll opened pandora's box for me.
 - Very enjoyable doing these LeetGPUs today
 
-## Day 9: Optimized Matrix Multiplication from scratch
+## Day 9: Optimized 2D Tiled Matrix Multiplication from scratch using unroll
 
 ### Resources:
 - PMPP
 
 ### Learnings:
-- 
+- Unroll shaves off about 10% of time in this kernel using a 16x16 threadblock
 
 ### Performance Observations:
-- 
+```
+===== Unrolled MatMul Results =====
+Block size: (1, 1)
+GPU time: 65.309 ms
+
+Block size: (1, 1)
+GPU time: 64.891 ms
+
+Block size: (2, 2)
+GPU time: 17.119 ms
+
+Block size: (4, 4)
+GPU time: 5.240 ms
+
+Block size: (8, 8)
+GPU time: 2.335 ms
+
+Block size: (16, 16)
+GPU time: 1.957 ms
+
+Block size: (32, 32)
+GPU time: 0.000 ms
+```
+- Ran (1,1) twice to try to eliminate the slowdown from kernel initialization. Turns out it made very little difference. From these results we can see the diminishing returns of threadblock dimensions
+
+
+```
+===== Count Array Element, 1M elements =====
+Time elapsed: 0.075488 ms
+GPU counted: 10
+```
+- Only tested CAE because it had the most "complex" kernel of the three I wrote on day 8. ReLUs had less computation so I assume they would be faster and do not want to write tests for them right now
+
 
 ### Notes:
-- 
-
+- I've taken a break for a few days, I am now getting back into the swing of things by testing my memory, seeing if I can write a matmul kernel from scratch, using the optimizations and ideas I have learned over the past few days
+- This was a good exercise to get back into CUDA after taking a few days off
 
 
 <!--
