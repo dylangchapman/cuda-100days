@@ -287,9 +287,71 @@ GPU counted: 10
 - This was a good exercise to get back into CUDA after taking a few days off
 
 
-<!--
 
-## Day 5:
+## Day 10: Vector Reduction
+
+### Resources:
+- GPT for developing intuition
+- CUDA Forums
+
+### Learnings:
+- Locked down what warps are
+- learned about ```__shfl_down_sync```
+
+### Performance Observations:
+
+- 2m elements
+```
+Naive Reduction:
+  Time = 0.182 ms
+  Result = 2097152
+
+Shared Memory Reduction:
+  Time = 0.149 ms
+  Result = 2097152
+
+Warp Shuffle Reduction:
+  Time = 0.069 ms
+  Result = 2097152
+```
+
+- 8m elements
+```
+Naive Reduction:
+  Time = 0.550 ms
+  Result = 8388608
+
+Shared Memory Reduction:
+  Time = 0.515 ms
+  Result = 8388608
+
+Warp Shuffle Reduction:
+  Time = 0.221 ms
+  Result = 8388608
+```
+
+- 16m elements
+```
+Naive Reduction:
+  Time = 1.046 ms
+  Result = 16777216
+
+Shared Memory Reduction:
+  Time = 1.011 ms
+  Result = 16777216
+
+Warp Shuffle Reduction:
+  Time = 0.434 ms
+  Result = 16777216
+```
+
+### Notes:
+- Warps are tough. Took a while to understand the reductions
+
+
+
+
+<!-- ## Day 5:
 _
 
 ### Resources:
@@ -308,4 +370,4 @@ _
 
 
 
-## Day 10: To be continued...
+## Day 11: To be continued...
